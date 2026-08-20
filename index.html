@@ -8,30 +8,32 @@
   <meta name="description"
     content="Aprenda do ZERO como ganhar dinheiro com Cestas de Café da Manhã, trabalhando de casa. Curso Vivendo de Cestas PRO.">
   <link rel="icon" href="images/logo.png" type="image/png">
+  <!-- Facebook Pixel -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
-        <!-- Google Analytics GA4 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q04B5KZWJT"></script>
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '27766330933030642');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=27766330933030642&ev=PageView&noscript=1" /></noscript>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q04B5KZWJT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-Q04B5KZWJT');
   </script>
-  n.callMethod ?
-  n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-  };
-  if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-  n.queue = []; t = b.createElement(e); t.async = !0;
-  t.src = v; s = b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t, s)
-  }(window, document, 'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '27766330933030642');
-  fbq('track', 'PageView');
-  </script> <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=27766330933030642&ev=PageView&noscript=1" /></noscript>
   <style>
     :root {
       --wine: #690B23;
@@ -43,19 +45,6 @@
 
     * {
       box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--wine);
-      line-height: 1.5;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
     }
 
     .container {
@@ -879,184 +868,184 @@
     // Initialize all carousels (autoplay + touch)
     (function () {
       var carousels = document.querySelectorAll('.carousel');
-    if (!carousels || carousels.length === 0) return;
+      if (!carousels || carousels.length === 0) return;
 
-    carousels.forEach(function (carousel) {
+      carousels.forEach(function (carousel) {
         var track = carousel.querySelector('.carousel-track');
-    var prev = carousel.querySelector('.carousel-btn.prev');
-    var next = carousel.querySelector('.carousel-btn.next');
-    var dotsWrap = carousel.querySelector('.carousel-dots');
-    var viewport = carousel.querySelector('.carousel-viewport');
-    var items = Array.prototype.slice.call(track.children);
+        var prev = carousel.querySelector('.carousel-btn.prev');
+        var next = carousel.querySelector('.carousel-btn.next');
+        var dotsWrap = carousel.querySelector('.carousel-dots');
+        var viewport = carousel.querySelector('.carousel-viewport');
+        var items = Array.prototype.slice.call(track.children);
 
-    function getItemsPerView() {
+        function getItemsPerView() {
           var w = window.innerWidth;
           if (w >= 1000) return 3;
           if (w >= 600) return 2;
-    return 1;
+          return 1;
         }
 
-    var itemsPerView = getItemsPerView();
-    // expose itemsPerView to CSS so item widths are computed relative to the viewport
-    carousel.style.setProperty('--items-per-view', itemsPerView);
+        var itemsPerView = getItemsPerView();
+        // expose itemsPerView to CSS so item widths are computed relative to the viewport
+        carousel.style.setProperty('--items-per-view', itemsPerView);
 
-    // compute and set pixel widths for items so group width equals viewport (accounts for gap)
-    var _itemW = 0, _gap = 0, _groupW = 0;
-    function layoutItems() {
+        // compute and set pixel widths for items so group width equals viewport (accounts for gap)
+        var _itemW = 0, _gap = 0, _groupW = 0;
+        function layoutItems() {
           if (!viewport || !items || items.length === 0) return;
-    _gap = parseFloat(getComputedStyle(track).gap) || 0;
-    var vp = viewport.offsetWidth;
-    _itemW = Math.max(0, (vp - _gap * (itemsPerView - 1)) / itemsPerView);
-    items.forEach(function (it) {
-      it.style.flex = '0 0 ' + Math.round(_itemW) + 'px';
+          _gap = parseFloat(getComputedStyle(track).gap) || 0;
+          var vp = viewport.offsetWidth;
+          _itemW = Math.max(0, (vp - _gap * (itemsPerView - 1)) / itemsPerView);
+          items.forEach(function (it) {
+            it.style.flex = '0 0 ' + Math.round(_itemW) + 'px';
           });
-    _groupW = (itemsPerView * _itemW) + (_gap * (itemsPerView - 1));
+          _groupW = (itemsPerView * _itemW) + (_gap * (itemsPerView - 1));
         }
-    var slideCount = Math.max(1, Math.ceil(items.length / itemsPerView));
-    var index = 0;
-    var autoplayDelay = 4000;
-    var autoplayTimer = null;
+        var slideCount = Math.max(1, Math.ceil(items.length / itemsPerView));
+        var index = 0;
+        var autoplayDelay = 4000;
+        var autoplayTimer = null;
 
-    function buildDots() {
+        function buildDots() {
           if (!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    for (var i = 0; i < slideCount; i++) {
+          dotsWrap.innerHTML = '';
+          for (var i = 0; i < slideCount; i++) {
             var btn = document.createElement('button');
-    btn.dataset.index = i;
-    if (i === 0) btn.classList.add('active');
-    btn.addEventListener('click', function (e) {
-      index = parseInt(e.currentTarget.dataset.index, 10);
-    update();
-    restartAutoplay();
+            btn.dataset.index = i;
+            if (i === 0) btn.classList.add('active');
+            btn.addEventListener('click', function (e) {
+              index = parseInt(e.currentTarget.dataset.index, 10);
+              update();
+              restartAutoplay();
             });
-    dotsWrap.appendChild(btn);
+            dotsWrap.appendChild(btn);
           }
         }
 
-    function update(animate) {
+        function update(animate) {
           if (animate === false) {
-      track.style.transition = 'none';
+            track.style.transition = 'none';
           } else {
-      track.style.transition = '';
+            track.style.transition = '';
           }
-    // shift by computed group width (items + gaps) per slide to keep items perfectly centered
-    var shift = -index * (_groupW || (viewport ? viewport.offsetWidth : 0));
-    track.style.transform = 'translateX(' + Math.round(shift) + 'px)';
-    if (!dotsWrap) return;
-    Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
-      d.classList.toggle('active', i === index);
+          // shift by computed group width (items + gaps) per slide to keep items perfectly centered
+          var shift = -index * (_groupW || (viewport ? viewport.offsetWidth : 0));
+          track.style.transform = 'translateX(' + Math.round(shift) + 'px)';
+          if (!dotsWrap) return;
+          Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
+            d.classList.toggle('active', i === index);
           });
         }
 
-    function prevSlide() {
-      index = (index - 1 + slideCount) % slideCount;
-    update();
+        function prevSlide() {
+          index = (index - 1 + slideCount) % slideCount;
+          update();
         }
 
-    function nextSlide() {
-      index = (index + 1) % slideCount;
-    update();
+        function nextSlide() {
+          index = (index + 1) % slideCount;
+          update();
         }
 
-    function startAutoplay() {
-      stopAutoplay();
-    autoplayTimer = setInterval(function () {
-      nextSlide();
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayTimer = setInterval(function () {
+            nextSlide();
           }, autoplayDelay);
         }
 
-    function stopAutoplay() {
+        function stopAutoplay() {
           if (autoplayTimer) {
-      clearInterval(autoplayTimer);
-    autoplayTimer = null;
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
           }
         }
 
-    function restartAutoplay() {
-      stopAutoplay();
-    startAutoplay();
+        function restartAutoplay() {
+          stopAutoplay();
+          startAutoplay();
         }
 
-    if (prev) prev.addEventListener('click', function () {prevSlide(); restartAutoplay(); });
-    if (next) next.addEventListener('click', function () {nextSlide(); restartAutoplay(); });
+        if (prev) prev.addEventListener('click', function () { prevSlide(); restartAutoplay(); });
+        if (next) next.addEventListener('click', function () { nextSlide(); restartAutoplay(); });
 
-    // Touch / swipe support on viewport
-    (function addTouch() {
+        // Touch / swipe support on viewport
+        (function addTouch() {
           if (!viewport) return;
-    var startX = 0;
-    var deltaX = 0;
-    var touching = false;
+          var startX = 0;
+          var deltaX = 0;
+          var touching = false;
 
-    viewport.addEventListener('touchstart', function (e) {
+          viewport.addEventListener('touchstart', function (e) {
             if (!e.touches || e.touches.length > 1) return;
-    touching = true;
-    startX = e.touches[0].clientX;
-    deltaX = 0;
-    track.style.transition = 'none';
-    stopAutoplay();
-          }, {passive: true });
+            touching = true;
+            startX = e.touches[0].clientX;
+            deltaX = 0;
+            track.style.transition = 'none';
+            stopAutoplay();
+          }, { passive: true });
 
-    viewport.addEventListener('touchmove', function (e) {
+          viewport.addEventListener('touchmove', function (e) {
             if (!touching) return;
-    var x = e.touches[0].clientX;
-    deltaX = x - startX;
-    // use pixel-based translate to match update() calculation (use computed group width)
-    var dragShift = (-index * (_groupW || viewport.offsetWidth)) + deltaX;
-    track.style.transform = 'translateX(' + Math.round(dragShift) + 'px)';
-          }, {passive: true });
+            var x = e.touches[0].clientX;
+            deltaX = x - startX;
+            // use pixel-based translate to match update() calculation (use computed group width)
+            var dragShift = (-index * (_groupW || viewport.offsetWidth)) + deltaX;
+            track.style.transform = 'translateX(' + Math.round(dragShift) + 'px)';
+          }, { passive: true });
 
-    viewport.addEventListener('touchend', function (e) {
+          viewport.addEventListener('touchend', function (e) {
             if (!touching) return;
-    touching = false;
-    track.style.transition = '';
+            touching = false;
+            track.style.transition = '';
             if (Math.abs(deltaX) > 40) {
               if (deltaX < 0) nextSlide(); else prevSlide();
             } else {
-      update();
+              update();
             }
-    restartAutoplay();
+            restartAutoplay();
           });
         })();
 
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function () {
             var newItemsPerView = getItemsPerView();
-    if (newItemsPerView !== itemsPerView) {
-      itemsPerView = newItemsPerView;
-    // update CSS var so widths recalc relative to viewport
-    carousel.style.setProperty('--items-per-view', itemsPerView);
-    // relayout items with new itemsPerView
-    layoutItems();
-    slideCount = Math.max(1, Math.ceil(items.length / itemsPerView));
-    index = Math.min(index, slideCount - 1);
-    buildDots();
-    update(false);
-    restartAutoplay();
+            if (newItemsPerView !== itemsPerView) {
+              itemsPerView = newItemsPerView;
+              // update CSS var so widths recalc relative to viewport
+              carousel.style.setProperty('--items-per-view', itemsPerView);
+              // relayout items with new itemsPerView
+              layoutItems();
+              slideCount = Math.max(1, Math.ceil(items.length / itemsPerView));
+              index = Math.min(index, slideCount - 1);
+              buildDots();
+              update(false);
+              restartAutoplay();
             } else {
-      // viewport width changed; relayout and update transform
-      layoutItems();
-    update(false);
+              // viewport width changed; relayout and update transform
+              layoutItems();
+              update(false);
             }
           }, 120);
         });
 
-    // init per carousel
-    layoutItems();
-    buildDots();
-    update();
-    startAutoplay();
-    // pause on hover
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
+        // init per carousel
+        layoutItems();
+        buildDots();
+        update();
+        startAutoplay();
+        // pause on hover
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay);
       });
     })();
   </script>
 
   <!-- GA4 CTA click tracking for checkout buttons -->
   <script>
-    (function(){
+    (function () {
       function attachCTA() {
         if (typeof gtag !== 'function') return;
         var links = document.querySelectorAll('a[href*="pay.kiwify.com.br"]');
